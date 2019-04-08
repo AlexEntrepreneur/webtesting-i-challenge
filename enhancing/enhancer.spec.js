@@ -66,5 +66,22 @@ describe('Enhancers', () => {
         enhancement
       );
     });
+
+  });
+
+  describe('Get Function', () => {
+    const zeroEnhancedItem = { ...defaultItem };
+    zeroEnhancedItem.enhancement = 0;
+
+    it('should not change name if enhancement is 0', () => {
+      expect(get(zeroEnhancedItem))
+        .toHaveProperty('name', zeroEnhancedItem.name);
+    });
+
+    it('should change name for enhanced item', () => {
+      const enhancedName = '[+18] Max Enhanced Item';
+      expect(get(maxEnhancedItem))
+        .toHaveProperty('name', enhancedName);
+    });
   });
 });
